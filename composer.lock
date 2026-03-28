@@ -4,8 +4,38 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "505fa8e1bdbd4f49e7107ab9a627cd4a",
-    "packages": [],
+    "content-hash": "b9e00f6ba710daadee055d89a624c9c3",
+    "packages": [
+        {
+            "name": "validation-api/settings",
+            "version": "dev-refactor/package",
+            "dist": {
+                "type": "path",
+                "url": "/Users/troychaplin/Develop/personal/validation-api-settings",
+                "reference": "e4d09c5105456caaa197405aa5114e6c1b8a3844"
+            },
+            "require": {
+                "php": ">=7.0"
+            },
+            "type": "library",
+            "autoload": {
+                "classmap": [
+                    "includes/"
+                ],
+                "files": [
+                    "bootstrap.php"
+                ]
+            },
+            "license": [
+                "GPL-2.0-or-later"
+            ],
+            "description": "Admin settings page for the Validation API plugin",
+            "transport-options": {
+                "symlink": false,
+                "relative": false
+            }
+        }
+    ],
     "packages-dev": [
         {
             "name": "dealerdirect/phpcodesniffer-composer-installer",
@@ -426,7 +456,9 @@
     ],
     "aliases": [],
     "minimum-stability": "stable",
-    "stability-flags": {},
+    "stability-flags": {
+        "validation-api/settings": 20
+    },
     "prefer-stable": false,
     "prefer-lowest": false,
     "platform": {},

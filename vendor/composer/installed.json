@@ -363,6 +363,38 @@
             "install-path": "../squizlabs/php_codesniffer"
         },
         {
+            "name": "validation-api/settings",
+            "version": "dev-refactor/package",
+            "version_normalized": "dev-refactor/package",
+            "dist": {
+                "type": "path",
+                "url": "/Users/troychaplin/Develop/personal/validation-api-settings",
+                "reference": "e4d09c5105456caaa197405aa5114e6c1b8a3844"
+            },
+            "require": {
+                "php": ">=7.0"
+            },
+            "type": "library",
+            "installation-source": "dist",
+            "autoload": {
+                "classmap": [
+                    "includes/"
+                ],
+                "files": [
+                    "bootstrap.php"
+                ]
+            },
+            "license": [
+                "GPL-2.0-or-later"
+            ],
+            "description": "Admin settings page for the Validation API plugin",
+            "transport-options": {
+                "symlink": false,
+                "relative": false
+            },
+            "install-path": "../validation-api/settings"
+        },
+        {
             "name": "wp-coding-standards/wpcs",
             "version": "3.3.0",
             "version_normalized": "3.3.0.0",
