@@ -5,9 +5,9 @@ export default function save({ attributes }) {
 
 	const blockProps = useBlockProps.save({
 		style: {
-			'--ba11y-check-example-card-grid-cols': String(columns),
-			'--ba11y-check-example-card-grid-gap': `${gap}px`,
-			'--ba11y-check-example-card-grid-radius': `${radius}px`,
+			'--validation-api-example-card-grid-cols': String(columns),
+			'--validation-api-example-card-grid-gap': `${gap}px`,
+			'--validation-api-example-card-grid-radius': `${radius}px`,
 		},
 	});
 

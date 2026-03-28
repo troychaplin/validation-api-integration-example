@@ -1,7 +1,7 @@
 /**
- * Album Card Block Accessibility Checks
+ * Album Card Validation API
  *
- * Integrates with the Block Accessibility Checks plugin validation system.
+ * Integrates with the Validation API plugin validation system.
  * All validation logic is now handled in JavaScript only.
  */
 
@@ -11,11 +11,11 @@ import { addFilter } from '@wordpress/hooks';
  * Register validation logic for album card block using the unified hook system
  */
 addFilter(
-	'ba11yc_validate_block',
-	'ba11y-checks-example/validation',
+	'validation_api_validate_block',
+	'validation-api-example/validation',
 	(isValid, blockType, attributes, checkName, block) => {
 		// Only handle our block type - FIXED: match the PHP registration
-		if (blockType !== 'ba11y-checks-example/album-card') {
+		if (blockType !== 'validation-api-example/album-card') {
 			return isValid;
 		}
 

@@ -1,8 +1,8 @@
 # useMetaField Helper
 
-This helper hook provides a **safe, zero-dependency integration** with the Block Accessibility Checks plugin.
+This helper hook provides a **safe, zero-dependency integration** with the Validation API plugin.
 
-It is designed to be copied into your plugin. It automatically detects if the Block Accessibility Checks plugin is active:
+It is designed to be copied into your plugin. It automatically detects if the Validation API plugin is active:
 - **If active:** It delegates to the plugin's enhanced validation hook (displaying error/warning messages automatically).
 - **If inactive:** It falls back to standard WordPress `core/editor` data handling, ensuring your plugin continues to work normally.
 

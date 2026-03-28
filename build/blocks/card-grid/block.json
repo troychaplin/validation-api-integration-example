@@ -1,13 +1,13 @@
 {
   "$schema": "https://schemas.wp.org/trunk/block.json",
   "apiVersion": 3,
-  "name": "ba11y-checks-example/card-grid",
+  "name": "validation-api-example/card-grid",
   "title": "Card Grid",
   "description": "A grid of cards with customizable columns, gap, and aspect ratio.",
   "version": "0.1.0",
   "category": "text",
   "providesContext": {
-    "ba11y-checks-example/card-grid-radius": "radius"
+    "validation-api-example/card-grid-radius": "radius"
   },
   "supports": {
     "align": [
@@ -31,7 +31,7 @@
       "default": 6
     }
   },
-  "textdomain": "ba11y-checks-example",
+  "textdomain": "validation-api-example",
   "editorScript": "file:./index.js",
   "editorStyle": "file:./index.css",
   "style": "file:./style-index.css",
@@ -43,7 +43,7 @@
     },
     "innerBlocks": [
       {
-        "name": "ba11y-checks-example/album-card",
+        "name": "validation-api-example/album-card",
         "attributes": {
           "headingText": "Album Title",
           "headingLevel": 2,
@@ -53,7 +53,7 @@
         }
       },
       {
-        "name": "ba11y-checks-example/album-card",
+        "name": "validation-api-example/album-card",
         "attributes": {
           "headingText": "Album Title",
           "headingLevel": 2,
@@ -63,7 +63,7 @@
         }
       },
       {
-        "name": "ba11y-checks-example/album-card",
+        "name": "validation-api-example/album-card",
         "attributes": {
           "headingText": "Album Title",
           "headingLevel": 2,
@@ -73,7 +73,7 @@
         }
       },
       {
-        "name": "ba11y-checks-example/album-card",
+        "name": "validation-api-example/album-card",
         "attributes": {
           "headingText": "Album Title",
           "headingLevel": 2,

@@ -4,12 +4,12 @@
  *
  * This class is responsible for registering the blocks for the plugin.
  *
- * @package Ba11y_Checks_Example
+ * @package Validation_API_Example
  */
 
-namespace Ba11y_Checks_Example;
+namespace Validation_API_Example;
 
-use Ba11y_Checks_Example\Plugin_Paths;
+use Validation_API_Example\Plugin_Paths;
 
 if ( ! defined( 'ABSPATH' ) ) {
 	exit;

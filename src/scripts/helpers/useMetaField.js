@@ -7,7 +7,7 @@ import { useSelect, useDispatch } from '@wordpress/data';
  * useMetaField Shim
  *
  * This hook provides a safe fallback for handling meta fields.
- * If the Block Accessibility Checks plugin is active, it uses the enhanced validation hook.
+ * If the Validation API plugin is active, it uses the enhanced validation hook.
  * If not, it falls back to standard WordPress meta handling.
  *
  * USAGE:
@@ -40,13 +40,13 @@ export function useMetaField(metaKey, originalHelp = '') {
 
 	// 1. Try to use the plugin's hook if available
 	if (
-		window.BlockAccessibilityChecks &&
-		typeof window.BlockAccessibilityChecks.useMetaField === 'function'
+		window.ValidationAPI &&
+		typeof window.ValidationAPI.useMetaField === 'function'
 	) {
 		// Note: This conditional hook call is theoretically unsafe if the plugin presence changes,
 		// but since it's a global plugin, it's stable for the session.
 		// eslint-disable-next-line react-hooks/rules-of-hooks
-		return window.BlockAccessibilityChecks.useMetaField(metaKey, originalHelp);
+		return window.ValidationAPI.useMetaField(metaKey, originalHelp);
 	}
 
 	// 2. Fallback: Standard WordPress data handling

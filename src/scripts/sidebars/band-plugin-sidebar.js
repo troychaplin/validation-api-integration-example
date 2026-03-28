@@ -13,7 +13,7 @@ import {
 } from '@wordpress/components';
 
 /**
- * Local Shim for Block Accessibility Checks
+ * Local Shim for Validation API
  */
 import { useMetaField } from '../helpers/useMetaField';
 
@@ -34,7 +34,7 @@ const BandDetailsSidebar = () => {
 		'band_origin',
 		__(
 			'Where the band originated from (e.g., "Los Angeles, CA", "London, UK")',
-			'ba11y-checks-example'
+			'validation-api-example'
 		)
 	);
 
@@ -42,7 +42,7 @@ const BandDetailsSidebar = () => {
 		'band_record_label',
 		__(
 			'The record label of the band (e.g., "Record Label Inc.", "Record Label LLC")',
-			'ba11y-checks-example'
+			'validation-api-example'
 		)
 	);
 
@@ -50,7 +50,7 @@ const BandDetailsSidebar = () => {
 		'band_first_album',
 		__(
 			'The first album of the band (e.g., "Album Title", "Album Title 2")',
-			'ba11y-checks-example'
+			'validation-api-example'
 		)
 	);
 
@@ -82,13 +82,13 @@ const BandDetailsSidebar = () => {
 				</ToolsPanelItem>
 			</ToolsPanel>
 
-			<PanelBody title={__('PanelBody Example', 'ba11y-checks-example')}>
+			<PanelBody title={__('PanelBody Example', 'validation-api-example')}>
 				<TextControl
-					label={__('Record Label', 'ba11y-checks-example')}
+					label={__('Record Label', 'validation-api-example')}
 					{...labelProps}
 				/>
 				<TextControl
-					label={__('First Album', 'ba11y-checks-example')}
+					label={__('First Album', 'validation-api-example')}
 					{...albumProps}
 				/>
 			</PanelBody>
