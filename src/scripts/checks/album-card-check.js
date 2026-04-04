@@ -11,7 +11,7 @@ import { addFilter } from '@wordpress/hooks';
  * Register validation logic for album card block using the unified hook system
  */
 addFilter(
-	'validation_api_validate_block',
+	'editor.validateBlock',
 	'validation-api-example/validation',
 	(isValid, blockType, attributes, checkName, block) => {
 		// Only handle our block type - FIXED: match the PHP registration

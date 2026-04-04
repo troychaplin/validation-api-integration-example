@@ -83,14 +83,8 @@ const BandDetailsSidebar = () => {
 			</ToolsPanel>
 
 			<PanelBody title={__('PanelBody Example', 'validation-api-example')}>
-				<TextControl
-					label={__('Record Label', 'validation-api-example')}
-					{...labelProps}
-				/>
-				<TextControl
-					label={__('First Album', 'validation-api-example')}
-					{...albumProps}
-				/>
+				<TextControl label={__('Record Label', 'validation-api-example')} {...labelProps} />
+				<TextControl label={__('First Album', 'validation-api-example')} {...albumProps} />
 			</PanelBody>
 		</PluginSidebar>
 	);

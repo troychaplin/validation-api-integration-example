@@ -13,7 +13,7 @@ import { addFilter } from '@wordpress/hooks';
  * to validate post meta fields in real-time.
  */
 addFilter(
-	'validation_api_validate_meta',
+	'editor.validateMeta',
 	'validation-api-example/validation',
 	(isValid, value, postType, metaKey, checkName) => {
 		// Only validate for band post type

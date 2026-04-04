@@ -9,8 +9,6 @@
 
 namespace Validation_API_Example;
 
-use ValidationAPI\Block\Registry as BlockChecksRegistry;
-
 if ( ! defined( 'ABSPATH' ) ) {
 	exit;
 }
@@ -36,30 +34,15 @@ class Check_Album_Cards {
 	 * @return void
 	 */
 	public function register_checks() {
-		if ( ! function_exists( 'validation_api_register_plugin' ) ) {
+		if ( ! function_exists( 'wp_register_block_validation_check' ) ) {
 			return;
 		}
 
-		\validation_api_register_plugin(
-			array( 'name' => 'Validation API Example - Album Cards' ),
-			function () {
-				$this->register_album_card_checks();
-			}
-		);
-	}
-
-	/**
-	 * Register checks for album cards
-	 *
-	 * @return void
-	 */
-	private function register_album_card_checks() {
-		$registry = BlockChecksRegistry::get_instance();
-
-		$registry->register_check(
+		wp_register_block_validation_check(
 			'validation-api-example/album-card',
-			'check_album_heading_text',
 			array(
+				'namespace'   => 'validation-api-example',
+				'name'        => 'check_album_heading_text',
 				'level'       => 'error',
 				'error_msg'   => __( 'A title is required for each album card.', 'validation-api-example' ),
 				'warning_msg' => __( 'Consider adding an album title for better accessibility.', 'validation-api-example' ),
@@ -67,10 +50,11 @@ class Check_Album_Cards {
 			)
 		);
 
-		$registry->register_check(
+		wp_register_block_validation_check(
 			'validation-api-example/album-card',
-			'check_album_release_date',
 			array(
+				'namespace'   => 'validation-api-example',
+				'name'        => 'check_album_release_date',
 				'level'       => 'warning',
 				'error_msg'   => __( 'A release date is required for each album card.', 'validation-api-example' ),
 				'warning_msg' => __( 'Consider adding an album release date for better user experience.', 'validation-api-example' ),
@@ -78,10 +62,11 @@ class Check_Album_Cards {
 			)
 		);
 
-		$registry->register_check(
+		wp_register_block_validation_check(
 			'validation-api-example/album-card',
-			'check_album_source_link',
 			array(
+				'namespace'   => 'validation-api-example',
+				'name'        => 'check_album_source_link',
 				'level'       => 'error',
 				'error_msg'   => __( 'A link is required for each album card.', 'validation-api-example' ),
 				'warning_msg' => __( 'Consider adding a link for better credibility.', 'validation-api-example' ),
@@ -89,10 +74,11 @@ class Check_Album_Cards {
 			)
 		);
 
-		$registry->register_check(
+		wp_register_block_validation_check(
 			'validation-api-example/album-card',
-			'check_album_innerblock_count',
 			array(
+				'namespace'   => 'validation-api-example',
+				'name'        => 'check_album_innerblock_count',
 				'level'       => 'error',
 				'error_msg'   => __( 'One paragraph is required for each album card to a maximum of two paragraphs. One button group is allowed per album card.', 'validation-api-example' ),
 				'warning_msg' => __( 'Consider adding a paragraph for better user experience. One button group is allowed per album card.', 'validation-api-example' ),

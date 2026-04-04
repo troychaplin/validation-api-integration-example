@@ -6,7 +6,7 @@ import { addFilter } from '@wordpress/hooks';
 
 // Check 1: First block must be a heading
 addFilter(
-	'validation_api_validate_editor',
+	'editor.validateEditor',
 	'validation-api-example/first-block-heading',
 	(isValid, blocks, _postType, checkName) => {
 		// Only process this specific check
@@ -32,7 +32,7 @@ addFilter(
 
 // Check 2: Max 3 paragraphs
 addFilter(
-	'validation_api_validate_editor',
+	'editor.validateEditor',
 	'validation-api-example/max-paragraphs',
 	(isValid, blocks, _postType, checkName) => {
 		// Only process this specific check
