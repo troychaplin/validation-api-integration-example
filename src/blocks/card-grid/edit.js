@@ -6,43 +6,43 @@ export default function Edit({ attributes, setAttributes, style }) {
 	const { columns, gap, radius, aspectRatio } = attributes;
 
 	const blockProps = useBlockProps({
-		className: 'ba11y-checks-example-editor',
+		className: 'validation-api-example-editor',
 		style: {
 			...style,
-			'--ba11y-check-example-card-grid-cols': String(columns),
-			'--ba11y-check-example-card-grid-gap': `${gap}px`,
-			'--ba11y-check-example-card-grid-radius': `${radius}px`,
-			'--ba11y-check-example-card-grid-aspect-ratio': aspectRatio,
+			'--validation-api-example-card-grid-cols': String(columns),
+			'--validation-api-example-card-grid-gap': `${gap}px`,
+			'--validation-api-example-card-grid-radius': `${radius}px`,
+			'--validation-api-example-card-grid-aspect-ratio': aspectRatio,
 		},
 	});
 
-	const allowedBlocks = ['ba11y-checks-example/album-card'];
+	const allowedBlocks = ['validation-api-example/album-card'];
 
 	const blockTemplate = [
-		['ba11y-checks-example/album-card'],
-		['ba11y-checks-example/album-card'],
+		['validation-api-example/album-card'],
+		['validation-api-example/album-card'],
 	];
 
 	return (
 		<>
 			<InspectorControls>
-				<PanelBody title={__('Card Grid Settings', 'ba11y-checks-example')}>
+				<PanelBody title={__('Card Grid Settings', 'validation-api-example')}>
 					<RangeControl
-						label={__('Number of Columns', 'ba11y-checks-example')}
+						label={__('Number of Columns', 'validation-api-example')}
 						min={1}
 						max={6}
 						value={columns}
 						onChange={value => setAttributes({ columns: value })}
 					/>
 					<RangeControl
-						label={__('Card Gap', 'ba11y-checks-example')}
+						label={__('Card Gap', 'validation-api-example')}
 						min={0}
 						max={50}
 						value={gap}
 						onChange={value => setAttributes({ gap: value })}
 					/>
 					<RangeControl
-						label={__('Card Radius', 'ba11y-checks-example')}
+						label={__('Card Radius', 'validation-api-example')}
 						min={0}
 						max={50}
 						value={radius}

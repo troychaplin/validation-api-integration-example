@@ -4,12 +4,12 @@
  *
  * This class is responsible for enqueuing the plugin's assets.
  *
- * @package Ba11y_Checks_Example
+ * @package Validation_API_Example
  */
 
-namespace Ba11y_Checks_Example;
+namespace Validation_API_Example;
 
-use Ba11y_Checks_Example\Plugin_Paths;
+use Validation_API_Example\Plugin_Paths;
 
 if ( ! defined( 'ABSPATH' ) ) {
 	exit;
@@ -42,10 +42,10 @@ class Enqueues {
 		// Start with the base dependencies from the asset file.
 		$dependencies = $asset_file['dependencies'];
 
-		// Only add Block Accessibility Checks plugin as a dependency if it's active.
+		// Only add Validation API plugin as a dependency if it's active.
 		// This allows the sidebar to work even when the plugin is deactivated.
-		if ( wp_script_is( 'block-accessibility-script', 'registered' ) ) {
-			$dependencies[] = 'block-accessibility-script';
+		if ( wp_script_is( 'validation-api-script', 'registered' ) ) {
+			$dependencies[] = 'validation-api-script';
 		}
 
 		wp_enqueue_script(

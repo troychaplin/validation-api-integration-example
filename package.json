@@ -1,7 +1,7 @@
 {
-	"name": "ba11y-checks-example",
+	"name": "validation-api-example",
 	"version": "1.4.21",
-	"description": "An example of an external multi-block with accessibility & validation checks",
+	"description": "An example integration plugin demonstrating validation checks with the Validation API",
 	"author": "Troy Chaplin",
 	"license": "GPL-2.0-or-later",
 	"main": "build/index.js",

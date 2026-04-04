@@ -162,10 +162,10 @@ export const DateSelector = ({
 				>
 					<div>
 						<SelectControl
-							label={__('Month', 'ba11y-checks-example')}
+							label={__('Month', 'validation-api-example')}
 							value={selectedMonth}
 							options={[
-								{ label: __('Month', 'ba11y-checks-example'), value: '' },
+								{ label: __('Month', 'validation-api-example'), value: '' },
 								...monthOptions,
 							]}
 							onChange={onMonthChange}
@@ -174,10 +174,10 @@ export const DateSelector = ({
 					</div>
 					<div>
 						<SelectControl
-							label={__('Day', 'ba11y-checks-example')}
+							label={__('Day', 'validation-api-example')}
 							value={selectedDay}
 							options={[
-								{ label: __('Day', 'ba11y-checks-example'), value: '' },
+								{ label: __('Day', 'validation-api-example'), value: '' },
 								...dayOptions,
 							]}
 							onChange={onDayChange}
@@ -186,10 +186,10 @@ export const DateSelector = ({
 					</div>
 					<div>
 						<SelectControl
-							label={__('Year', 'ba11y-checks-example')}
+							label={__('Year', 'validation-api-example')}
 							value={selectedYear}
 							options={[
-								{ label: __('Year', 'ba11y-checks-example'), value: '' },
+								{ label: __('Year', 'validation-api-example'), value: '' },
 								...yearOptions,
 							]}
 							onChange={onYearChange}
@@ -217,7 +217,7 @@ export const DateSelector = ({
 							fontSize: '13px',
 						}}
 					>
-						{__('Cancel', 'ba11y-checks-example')}
+						{__('Cancel', 'validation-api-example')}
 					</button>
 					<button
 						onClick={handleDateSet}
@@ -232,7 +232,7 @@ export const DateSelector = ({
 							fontSize: '13px',
 						}}
 					>
-						{__('Set Date', 'ba11y-checks-example')}
+						{__('Set Date', 'validation-api-example')}
 					</button>
 				</div>
 			</div>

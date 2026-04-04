@@ -9,12 +9,12 @@ import { addFilter } from '@wordpress/hooks';
 /**
  * Validate band meta fields
  *
- * This filter integrates with the Block Accessibility Checks plugin
+ * This filter integrates with the Validation API plugin
  * to validate post meta fields in real-time.
  */
 addFilter(
-	'ba11yc_validate_meta',
-	'ba11y-checks-example/validation',
+	'editor.validateMeta',
+	'validation-api-example/validation',
 	(isValid, value, postType, metaKey, checkName) => {
 		// Only validate for band post type
 		if (postType !== 'band') {

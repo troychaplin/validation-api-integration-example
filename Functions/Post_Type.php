@@ -4,10 +4,10 @@
  *
  * This class is responsible for enqueuing the plugin's assets.
  *
- * @package Ba11y_Checks_Example
+ * @package Validation_API_Example
  */
 
-namespace Ba11y_Checks_Example;
+namespace Validation_API_Example;
 
 if ( ! defined( 'ABSPATH' ) ) {
 	exit;
@@ -171,10 +171,6 @@ class Post_Type {
 	 * @return void
 	 */
 	public function register_band_meta() {
-		// Check if Validator class is available.
-		$validator_class     = '\BlockAccessibility\Meta\Validator';
-		$validator_available = class_exists( $validator_class );
-
 		register_meta(
 			'post',
 			'band_origin',
@@ -184,19 +180,6 @@ class Post_Type {
 				'show_in_rest'      => true,
 				'object_subtype'    => 'band',
 				'sanitize_callback' => 'sanitize_text_field',
-				'validate_callback' => $validator_available
-					? call_user_func(
-						array( $validator_class, 'required' ),
-						'band',
-						'band_origin',
-						array(
-							'error_msg'   => __( 'City of Origin is required.', 'ba11y-checks-example' ),
-							'warning_msg' => __( 'City of Origin is recommended.', 'ba11y-checks-example' ),
-							'description' => __( 'The city where the band originated', 'ba11y-checks-example' ),
-							'type'        => 'settings',
-						)
-					)
-					: null,
 			)
 		);
 		register_meta(
@@ -208,19 +191,6 @@ class Post_Type {
 				'show_in_rest'      => true,
 				'object_subtype'    => 'band',
 				'sanitize_callback' => 'sanitize_text_field',
-				'validate_callback' => $validator_available
-					? call_user_func(
-						array( $validator_class, 'required' ),
-						'band',
-						'band_record_label',
-						array(
-							'error_msg'   => __( 'Record Label is required.', 'ba11y-checks-example' ),
-							'warning_msg' => __( 'Record Label is recommended.', 'ba11y-checks-example' ),
-							'description' => __( 'The record label of the band', 'ba11y-checks-example' ),
-							'type'        => 'settings',
-						)
-					)
-					: null,
 			)
 		);
 		register_meta(
@@ -232,19 +202,6 @@ class Post_Type {
 				'show_in_rest'      => true,
 				'object_subtype'    => 'band',
 				'sanitize_callback' => 'sanitize_text_field',
-				'validate_callback' => $validator_available
-					? call_user_func(
-						array( $validator_class, 'required' ),
-						'band',
-						'band_first_album',
-						array(
-							'error_msg'   => __( 'First Album is required.', 'ba11y-checks-example' ),
-							'warning_msg' => __( 'First Album is recommended.', 'ba11y-checks-example' ),
-							'description' => __( 'The first album of the band', 'ba11y-checks-example' ),
-							'type'        => 'settings',
-						)
-					)
-					: null,
 			)
 		);
 	}
