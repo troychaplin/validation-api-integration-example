@@ -31,11 +31,11 @@ class Check_Band_Meta {
 	 * @return void
 	 */
 	public function register_checks(): void {
-		if ( ! function_exists( 'wp_register_meta_validation_check' ) ) {
+		if ( ! function_exists( 'validation_api_register_meta_check' ) ) {
 			return;
 		}
 
-		wp_register_meta_validation_check(
+		validation_api_register_meta_check(
 			'band',
 			array(
 				'namespace'   => 'validation-api-example',
@@ -48,7 +48,7 @@ class Check_Band_Meta {
 			)
 		);
 
-		wp_register_meta_validation_check(
+		validation_api_register_meta_check(
 			'band',
 			array(
 				'namespace'   => 'validation-api-example',
@@ -61,7 +61,7 @@ class Check_Band_Meta {
 			)
 		);
 
-		wp_register_meta_validation_check(
+		validation_api_register_meta_check(
 			'band',
 			array(
 				'namespace'   => 'validation-api-example',
