@@ -6,10 +6,14 @@ import { useSelect, useDispatch } from '@wordpress/data';
 /**
  * useMetaField Hook
  *
- * Provides standard WordPress meta field handling with validation integration.
- * When the Validation API plugin is active, the `useMetaField` and
- * `useMetaValidation` hooks can be imported directly from the plugin's script
- * module for enhanced validation support.
+ * Provides standard WordPress meta field handling with validation-aware
+ * border styling when the Validation API plugin is active. Reads per-meta
+ * validation state from the `core/validation` store and applies an
+ * error/warning wrapper class so the field gets the expected left border.
+ *
+ * When the Validation API plugin is not active the `core/validation` store
+ * is not registered — the shim degrades gracefully to plain meta handling
+ * with no wrapper class.
  *
  * USAGE:
  * Copy this file to your plugin and import it in your sidebars.
@@ -21,17 +25,26 @@ import { useSelect, useDispatch } from '@wordpress/data';
  * @return {Object} Props for TextControl (value, onChange, help, className)
  */
 export function useMetaField(metaKey, originalHelp = '') {
-	const { value } = useSelect(
+	const { value, wrapperClassName } = useSelect(
 		select => {
 			const editor = select('core/editor');
-			if (!editor) {
-				return { value: '' };
+			const validation = select('core/validation');
+
+			const meta = editor ? editor.getEditedPostAttribute('meta') : null;
+			const currentValue = meta ? meta[metaKey] : '';
+
+			let className = '';
+			if (validation && typeof validation.getInvalidMeta === 'function') {
+				const invalidMeta = validation.getInvalidMeta() || [];
+				const thisField = invalidMeta.find(m => m.metaKey === metaKey);
+				if (thisField?.hasErrors) {
+					className = 'validation-api-meta-error';
+				} else if (thisField?.hasWarnings) {
+					className = 'validation-api-meta-warning';
+				}
 			}
 
-			const meta = editor.getEditedPostAttribute('meta');
-			return {
-				value: meta ? meta[metaKey] : '',
-			};
+			return { value: currentValue, wrapperClassName: className };
 		},
 		[metaKey]
 	);
@@ -46,6 +59,6 @@ export function useMetaField(metaKey, originalHelp = '') {
 			}
 		},
 		help: originalHelp,
-		className: '',
+		className: wrapperClassName ? `validation-api-field ${wrapperClassName}` : '',
 	};
 }

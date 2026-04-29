@@ -27,12 +27,12 @@ class Check_Content_Editor {
 	 * @return void
 	 */
 	public function register_checks(): void {
-		if ( ! function_exists( 'wp_register_editor_validation_check' ) ) {
+		if ( ! function_exists( 'validation_api_register_editor_check' ) ) {
 			return;
 		}
 
 		// Check 1: First block must be a heading (for multiple post types).
-		wp_register_editor_validation_check(
+		validation_api_register_editor_check(
 			'band',
 			array(
 				'namespace'   => 'validation-api-example',
@@ -45,7 +45,7 @@ class Check_Content_Editor {
 		);
 
 		// Check 2: No more than 3 paragraphs (just as a silly example).
-		wp_register_editor_validation_check(
+		validation_api_register_editor_check(
 			'band',
 			array(
 				'namespace'   => 'validation-api-example',

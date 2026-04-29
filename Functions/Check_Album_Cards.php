@@ -34,11 +34,11 @@ class Check_Album_Cards {
 	 * @return void
 	 */
 	public function register_checks() {
-		if ( ! function_exists( 'wp_register_block_validation_check' ) ) {
+		if ( ! function_exists( 'validation_api_register_block_check' ) ) {
 			return;
 		}
 
-		wp_register_block_validation_check(
+		validation_api_register_block_check(
 			'validation-api-example/album-card',
 			array(
 				'namespace'   => 'validation-api-example',
@@ -50,7 +50,7 @@ class Check_Album_Cards {
 			)
 		);
 
-		wp_register_block_validation_check(
+		validation_api_register_block_check(
 			'validation-api-example/album-card',
 			array(
 				'namespace'   => 'validation-api-example',
@@ -62,7 +62,7 @@ class Check_Album_Cards {
 			)
 		);
 
-		wp_register_block_validation_check(
+		validation_api_register_block_check(
 			'validation-api-example/album-card',
 			array(
 				'namespace'   => 'validation-api-example',
@@ -74,7 +74,7 @@ class Check_Album_Cards {
 			)
 		);
 
-		wp_register_block_validation_check(
+		validation_api_register_block_check(
 			'validation-api-example/album-card',
 			array(
 				'namespace'   => 'validation-api-example',
