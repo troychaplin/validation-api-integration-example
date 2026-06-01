@@ -9,6 +9,10 @@
 
 namespace Validation_API_Example;
 
+if ( ! defined( 'ABSPATH' ) ) {
+	exit;
+}
+
 /**
  * Register Editor Checks Class
  */
@@ -44,7 +48,7 @@ class Check_Content_Editor {
 			)
 		);
 
-		// Check 2: No more than 3 paragraphs (just as a silly example).
+		// Check 2: No more than 3 paragraphs.
 		validation_api_register_editor_check(
 			'band',
 			array(

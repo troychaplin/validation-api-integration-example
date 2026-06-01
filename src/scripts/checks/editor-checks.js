@@ -18,7 +18,7 @@ addFilter(
 		// This check will only run for post types where it's registered (post, page, etc.)
 
 		if (!blocks || blocks.length === 0) {
-			return true; // Empty editor is fine? Or maybe not. Let's say fine.
+			return true;
 		}
 
 		const firstBlock = blocks[0];

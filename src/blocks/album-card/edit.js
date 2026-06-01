@@ -1,4 +1,3 @@
-// WordPress dependencies
 import { useState, useEffect } from '@wordpress/element';
 import { __ } from '@wordpress/i18n';
 import {
@@ -12,7 +11,6 @@ import {
 import { link, calendar } from '@wordpress/icons';
 import { ToolbarGroup, ToolbarButton, Popover } from '@wordpress/components';
 
-// Internal dependencies
 import {
 	formatDate,
 	DateSelector,
@@ -45,10 +43,13 @@ export default function Edit({ attributes, setAttributes, context }) {
 		},
 	});
 
-	// Get attributes from context of parent block
-	setAttributes({
-		radius: context['validation-api-example/card-grid-radius'],
-	});
+	// Sync radius from parent block context.
+	useEffect(() => {
+		const contextRadius = context['validation-api-example/card-grid-radius'];
+		if (contextRadius !== radius) {
+			setAttributes({ radius: contextRadius });
+		}
+	}, [context, radius, setAttributes]);
 
 	// Parse existing releaseDate to populate date selector state
 	useEffect(() => {

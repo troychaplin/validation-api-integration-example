@@ -21,7 +21,7 @@ if ( ! defined( 'ABSPATH' ) ) {
 if ( file_exists( plugin_dir_path( __FILE__ ) . 'vendor/autoload.php' ) ) {
 	require_once plugin_dir_path( __FILE__ ) . 'vendor/autoload.php';
 } else {
-	wp_trigger_error( 'Validation API Integration Example: Composer autoload file not found. Please run `composer install`.', E_USER_ERROR );
+	wp_trigger_error( 'Validation_API_Example', 'Composer autoload file not found. Please run `composer install`.', E_USER_ERROR );
 	return;
 }
 
