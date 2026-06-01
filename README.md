@@ -55,18 +55,14 @@ This plugin serves as a working example for developers who want to:
 
 ```php
 // Functions/Check_Album_Cards.php
-validation_api_register_plugin(
-    array( 'name' => 'Validation API Example - Album Cards' ),
-    function () {
-        validation_api_register_block_check( 'validation-api-example/album-card', array(
-            'name'        => 'check_album_heading_text',
-            'level'       => 'error',
-            'error_msg'   => __( 'A title is required.', 'validation-api-example' ),
-            'warning_msg' => __( 'Consider adding a title.', 'validation-api-example' ),
-            'description' => __( 'Validates the album title.', 'validation-api-example' ),
-        ) );
-    }
-);
+validation_api_register_block_check( 'validation-api-example/album-card', array(
+    'namespace'   => 'validation-api-example',
+    'name'        => 'check_album_heading_text',
+    'level'       => 'error',
+    'error_msg'   => __( 'A title is required.', 'validation-api-example' ),
+    'warning_msg' => __( 'Consider adding a title.', 'validation-api-example' ),
+    'description' => __( 'Validates the album title.', 'validation-api-example' ),
+) );
 ```
 
 ### 2. Implementing Validation Logic (JavaScript)
@@ -74,7 +70,7 @@ validation_api_register_plugin(
 ```javascript
 // src/scripts/checks/album-card-check.js
 addFilter(
-    'validation_api_validate_block',
+    'editor.validateBlock',
     'validation-api-example/validation',
     (isValid, blockType, attributes, checkName) => {
         if (blockType !== 'validation-api-example/album-card') return isValid;
@@ -133,13 +129,11 @@ validation-api-integration-example/
 
 This example integrates with the Validation API plugin through:
 
-- **Registration Functions**: `validation_api_register_block_check()`, `validation_api_register_meta_check()`, `validation_api_register_editor_check()`
-- **Plugin Wrapper**: `validation_api_register_plugin()` for plugin attribution
+- **Registration Functions**: `validation_api_register_block_check()`, `validation_api_register_meta_check()`, `validation_api_register_editor_check()` — each requires `namespace`, `name`, and `error_msg` in its args array
 - **JS Filter Hooks**:
-  - `validation_api_validate_block` for block validation
-  - `validation_api_validate_meta` for meta field validation
-  - `validation_api_validate_editor` for editor-level validation
-- **Hooks API**: `window.ValidationAPI.useMetaField` for automatic state management
+  - `editor.validateBlock` for block validation
+  - `editor.validateMeta` for meta field validation
+  - `editor.validateEditor` for editor-level validation
 
 ## Development
 
