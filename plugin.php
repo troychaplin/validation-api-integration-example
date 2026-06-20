@@ -2,7 +2,7 @@
 /**
  * Plugin Name:       Multi-Block Check Example
  * Description:       An example of an external multi-block with accessibility & validation checks
- * Version:           1.4.21
+ * Version:           2.0.0
  * Requires at least: 6.7
  * Requires PHP:      7.4
  * Author:            Troy Chaplin

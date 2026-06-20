@@ -4,57 +4,47 @@
 import { useSelect, useDispatch } from '@wordpress/data';
 
 /**
- * useMetaField Shim
+ * useMetaField
  *
- * This hook provides a safe fallback for handling meta fields.
- * If the Block Accessibility Checks plugin is active, it uses the enhanced validation hook.
- * If not, it falls back to standard WordPress meta handling.
+ * A hook for binding a post meta field to an editor component with a clean
+ * fallback when the Block Accessibility Checks plugin is not active.
  *
- * USAGE:
- * Copy this file to your plugin and import it in your sidebars.
- * const props = useMetaField('my_meta_key', 'My help text');
- * <TextControl {...props} />
+ * The BAC plugin's `useMetaField` hook is now a named export from its editor
+ * module rather than a global. If your build pipeline resolves
+ * `@block-accessibility-checks/editor`, import from there instead:
+ *
+ *   import { useMetaField } from '@block-accessibility-checks/editor';
+ *
+ * Otherwise, this shim handles standard WordPress meta binding so your plugin
+ * continues to work when BAC is deactivated.
  *
  * @param {string} metaKey        - The meta key to manage
  * @param {string} [originalHelp] - Optional help text
  * @return {Object} Props for TextControl (value, onChange, help, className)
  */
-export function useMetaField(metaKey, originalHelp = '') {
-	// Always run standard hooks to comply with Rules of Hooks
+export function useMetaField( metaKey, originalHelp = '' ) {
 	const { value } = useSelect(
 		select => {
-			const editor = select('core/editor');
-			if (!editor) {
+			const editor = select( 'core/editor' );
+			if ( ! editor ) {
 				return { value: '' };
 			}
 
-			const meta = editor.getEditedPostAttribute('meta');
+			const meta = editor.getEditedPostAttribute( 'meta' );
 			return {
-				value: meta ? meta[metaKey] : '',
+				value: meta ? meta[ metaKey ] : '',
 			};
 		},
-		[metaKey]
+		[ metaKey ]
 	);
 
-	const { editPost } = useDispatch('core/editor');
+	const { editPost } = useDispatch( 'core/editor' );
 
-	// 1. Try to use the plugin's hook if available
-	if (
-		window.BlockAccessibilityChecks &&
-		typeof window.BlockAccessibilityChecks.useMetaField === 'function'
-	) {
-		// Note: This conditional hook call is theoretically unsafe if the plugin presence changes,
-		// but since it's a global plugin, it's stable for the session.
-		// eslint-disable-next-line react-hooks/rules-of-hooks
-		return window.BlockAccessibilityChecks.useMetaField(metaKey, originalHelp);
-	}
-
-	// 2. Fallback: Standard WordPress data handling
 	return {
 		value: value || '',
 		onChange: newValue => {
-			if (editPost) {
-				editPost({ meta: { [metaKey]: newValue } });
+			if ( editPost ) {
+				editPost( { meta: { [ metaKey ]: newValue } } );
 			}
 		},
 		help: originalHelp,
