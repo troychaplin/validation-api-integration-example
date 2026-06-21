@@ -1,4 +1,3 @@
-// WordPress dependencies
 import { useState, useEffect } from '@wordpress/element';
 import { __ } from '@wordpress/i18n';
 import {
@@ -12,7 +11,6 @@ import {
 import { link, calendar } from '@wordpress/icons';
 import { ToolbarGroup, ToolbarButton, Popover } from '@wordpress/components';
 
-// Internal dependencies
 import {
 	formatDate,
 	DateSelector,
@@ -39,16 +37,19 @@ export default function Edit({ attributes, setAttributes, context }) {
 	} = useDateSelector();
 
 	const blockProps = useBlockProps({
-		className: 'ba11y-checks-example-album-card',
+		className: 'validation-api-example-album-card',
 		style: {
-			'--ba11y-check-example-card-grid-radius': `${radius}px`,
+			'--validation-api-example-card-grid-radius': `${radius}px`,
 		},
 	});
 
-	// Get attributes from context of parent block
-	setAttributes({
-		radius: context['ba11y-checks-example/card-grid-radius'],
-	});
+	// Sync radius from parent block context.
+	useEffect(() => {
+		const contextRadius = context['validation-api-example/card-grid-radius'];
+		if (contextRadius !== radius) {
+			setAttributes({ radius: contextRadius });
+		}
+	}, [context, radius, setAttributes]);
 
 	// Parse existing releaseDate to populate date selector state
 	useEffect(() => {
@@ -89,8 +90,8 @@ export default function Edit({ attributes, setAttributes, context }) {
 						icon={link}
 						label={
 							sourceUrl
-								? __('Edit link', 'ba11y-checks-example')
-								: __('Add link', 'ba11y-checks-example')
+								? __('Edit link', 'validation-api-example')
+								: __('Add link', 'validation-api-example')
 						}
 						onClick={() => setIsLinkOpen(true)}
 						isPressed={!!sourceUrl}
@@ -112,8 +113,8 @@ export default function Edit({ attributes, setAttributes, context }) {
 						icon={calendar}
 						label={
 							releaseDate
-								? __('Edit release date', 'ba11y-checks-example')
-								: __('Add release date', 'ba11y-checks-example')
+								? __('Edit release date', 'validation-api-example')
+								: __('Add release date', 'validation-api-example')
 						}
 						onClick={() => setIsDateOpen(true)}
 						isPressed={!!releaseDate}
@@ -130,7 +131,7 @@ export default function Edit({ attributes, setAttributes, context }) {
 						onYearChange={setSelectedYear}
 						onDateSet={onDateSet}
 						title="Select Release Date"
-						textDomain="ba11y-checks-example"
+						textDomain="validation-api-example"
 					/>
 				</ToolbarGroup>
 			</BlockControls>

@@ -1,6 +1,6 @@
-.wp-block-ba11y-checks-example-card-grid:not(.wp-block),
-.wp-block.wp-block-ba11y-checks-example-card-grid > .block-editor-inner-blocks > .block-editor-block-list__layout {
+.wp-block-validation-api-example-card-grid:not(.wp-block),
+.wp-block.wp-block-validation-api-example-card-grid > .block-editor-inner-blocks > .block-editor-block-list__layout {
 	display: grid;
-	grid-template-columns: repeat(var(--ba11y-check-example-card-grid-cols), minmax(0, 1fr));
-	grid-gap: var(--ba11y-check-example-card-grid-gap);
+	grid-template-columns: repeat(var(--validation-api-example-card-grid-cols), minmax(0, 1fr));
+	grid-gap: var(--validation-api-example-card-grid-gap);
 }

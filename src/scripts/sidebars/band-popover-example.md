@@ -69,10 +69,10 @@ const MonthYearSelector = ({
 				>
 					<div>
 						<SelectControl
-							label={__('Month', 'ba11y-checks-example')}
+							label={__('Month', 'validation-api-example')}
 							value={selectedMonth}
 							options={[
-								{ label: __('Month', 'ba11y-checks-example'), value: '' },
+								{ label: __('Month', 'validation-api-example'), value: '' },
 								...monthOptions,
 							]}
 							onChange={onMonthChange}
@@ -81,10 +81,10 @@ const MonthYearSelector = ({
 					</div>
 					<div>
 						<SelectControl
-							label={__('Year', 'ba11y-checks-example')}
+							label={__('Year', 'validation-api-example')}
 							value={selectedYear}
 							options={[
-								{ label: __('Year', 'ba11y-checks-example'), value: '' },
+								{ label: __('Year', 'validation-api-example'), value: '' },
 								...yearOptions,
 							]}
 							onChange={onYearChange}
@@ -112,7 +112,7 @@ const MonthYearSelector = ({
 							fontSize: '13px',
 						}}
 					>
-						{__('Cancel', 'ba11y-checks-example')}
+						{__('Cancel', 'validation-api-example')}
 					</button>
 					<button
 						onClick={handleDateSet}
@@ -127,7 +127,7 @@ const MonthYearSelector = ({
 							fontSize: '13px',
 						}}
 					>
-						{__('Set Date', 'ba11y-checks-example')}
+						{__('Set Date', 'validation-api-example')}
 					</button>
 				</div>
 			</div>
@@ -175,14 +175,14 @@ const BandMetaPanel = () => {
 	return (
 		<PluginDocumentSettingPanel
 			name="band-meta-panel"
-			title={__('Band Details', 'ba11y-checks-example')}
+			title={__('Band Details', 'validation-api-example')}
 		>
 			<div style={{ marginBottom: '16px' }}>
 				<label
 					htmlFor="band-start-date-button"
 					style={{ display: 'block', marginBottom: '8px', fontWeight: '600' }}
 				>
-					{__('Band Start Date', 'ba11y-checks-example')}
+					{__('Band Start Date', 'validation-api-example')}
 				</label>
 				<Button
 					id="band-start-date-button"
@@ -192,7 +192,7 @@ const BandMetaPanel = () => {
 				>
 					{startDate
 						? formatDate(startDate)
-						: __('Select Month & Year', 'ba11y-checks-example')}
+						: __('Select Month & Year', 'validation-api-example')}
 				</Button>
 			</div>
 
@@ -208,7 +208,7 @@ const BandMetaPanel = () => {
 				onMonthChange={setSelectedMonth}
 				onYearChange={setSelectedYear}
 				onDateSet={handleDateSet}
-				title={__('Select Band Start Month & Year', 'ba11y-checks-example')}
+				title={__('Select Band Start Month & Year', 'validation-api-example')}
 			/>
 		</PluginDocumentSettingPanel>
 	);

@@ -4,17 +4,17 @@ return array(
 	'album-card' => array(
 		'$schema' => 'https://schemas.wp.org/trunk/block.json',
 		'apiVersion' => 3,
-		'name' => 'ba11y-checks-example/album-card',
+		'name' => 'validation-api-example/album-card',
 		'version' => '1.0.0',
 		'title' => 'Album Card',
 		'description' => 'An example block for displaying album cards with accessibility checks in place.',
 		'category' => 'text',
 		'icon' => 'universal-access',
 		'parent' => array(
-			'ba11y-checks-example/card-grid'
+			'validation-api-example/card-grid'
 		),
 		'usesContext' => array(
-			'ba11y-checks-example/card-grid-radius'
+			'validation-api-example/card-grid-radius'
 		),
 		'supports' => array(
 			'html' => false
@@ -45,7 +45,7 @@ return array(
 				'default' => 6
 			)
 		),
-		'textdomain' => 'ba11y-checks-example',
+		'textdomain' => 'validation-api-example',
 		'editorScript' => 'file:./index.js',
 		'editorStyle' => 'file:./index.css',
 		'style' => 'file:./style-index.css',
@@ -54,13 +54,13 @@ return array(
 	'card-grid' => array(
 		'$schema' => 'https://schemas.wp.org/trunk/block.json',
 		'apiVersion' => 3,
-		'name' => 'ba11y-checks-example/card-grid',
+		'name' => 'validation-api-example/card-grid',
 		'title' => 'Card Grid',
 		'description' => 'A grid of cards with customizable columns, gap, and aspect ratio.',
 		'version' => '0.1.0',
 		'category' => 'text',
 		'providesContext' => array(
-			'ba11y-checks-example/card-grid-radius' => 'radius'
+			'validation-api-example/card-grid-radius' => 'radius'
 		),
 		'supports' => array(
 			'align' => array(
@@ -84,7 +84,7 @@ return array(
 				'default' => 6
 			)
 		),
-		'textdomain' => 'ba11y-checks-example',
+		'textdomain' => 'validation-api-example',
 		'editorScript' => 'file:./index.js',
 		'editorStyle' => 'file:./index.css',
 		'style' => 'file:./style-index.css',
@@ -96,7 +96,7 @@ return array(
 			),
 			'innerBlocks' => array(
 				array(
-					'name' => 'ba11y-checks-example/album-card',
+					'name' => 'validation-api-example/album-card',
 					'attributes' => array(
 						'headingText' => 'Album Title',
 						'headingLevel' => 2,
@@ -106,7 +106,7 @@ return array(
 					)
 				),
 				array(
-					'name' => 'ba11y-checks-example/album-card',
+					'name' => 'validation-api-example/album-card',
 					'attributes' => array(
 						'headingText' => 'Album Title',
 						'headingLevel' => 2,
@@ -116,7 +116,7 @@ return array(
 					)
 				),
 				array(
-					'name' => 'ba11y-checks-example/album-card',
+					'name' => 'validation-api-example/album-card',
 					'attributes' => array(
 						'headingText' => 'Album Title',
 						'headingLevel' => 2,
@@ -126,7 +126,7 @@ return array(
 					)
 				),
 				array(
-					'name' => 'ba11y-checks-example/album-card',
+					'name' => 'validation-api-example/album-card',
 					'attributes' => array(
 						'headingText' => 'Album Title',
 						'headingLevel' => 2,

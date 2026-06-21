@@ -6,8 +6,8 @@ import { addFilter } from '@wordpress/hooks';
 
 // Check 1: First block must be a heading
 addFilter(
-	'ba11yc_validate_editor',
-	'multi-block-checks/first-block-heading',
+	'editor.validateEditor',
+	'validation-api-example/first-block-heading',
 	(isValid, blocks, _postType, checkName) => {
 		// Only process this specific check
 		if (checkName !== 'first_block_heading') {
@@ -18,7 +18,7 @@ addFilter(
 		// This check will only run for post types where it's registered (post, page, etc.)
 
 		if (!blocks || blocks.length === 0) {
-			return true; // Empty editor is fine? Or maybe not. Let's say fine.
+			return true;
 		}
 
 		const firstBlock = blocks[0];
@@ -32,8 +32,8 @@ addFilter(
 
 // Check 2: Max 3 paragraphs
 addFilter(
-	'ba11yc_validate_editor',
-	'multi-block-checks/max-paragraphs',
+	'editor.validateEditor',
+	'validation-api-example/max-paragraphs',
 	(isValid, blocks, _postType, checkName) => {
 		// Only process this specific check
 		if (checkName !== 'max_paragraphs') {

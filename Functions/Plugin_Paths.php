@@ -4,10 +4,10 @@
  *
  * This class provides utility methods for retrieving the plugin's URL and path.
  *
- * @package Ba11y_Checks_Example
+ * @package Validation_API_Example
  */
 
-namespace Ba11y_Checks_Example;
+namespace Validation_API_Example;
 
 if ( ! defined( 'ABSPATH' ) ) {
 	exit;

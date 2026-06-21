@@ -4,50 +4,60 @@
 import { useSelect, useDispatch } from '@wordpress/data';
 
 /**
- * useMetaField
+ * useMetaField Hook
  *
- * A hook for binding a post meta field to an editor component with a clean
- * fallback when the Block Accessibility Checks plugin is not active.
+ * Provides standard WordPress meta field handling with validation-aware
+ * border styling when the Block Accessibility Checks plugin is active. Reads
+ * per-meta validation state from the `core/validation` store and applies an
+ * error/warning wrapper class so the field gets the expected left border.
  *
- * The BAC plugin's `useMetaField` hook is now a named export from its editor
- * module rather than a global. If your build pipeline resolves
- * `@block-accessibility-checks/editor`, import from there instead:
+ * When BAC is not active the `core/validation` store is not registered —
+ * the hook degrades gracefully to plain meta handling with no wrapper class.
+ *
+ * If your build pipeline resolves `@block-accessibility-checks/editor`,
+ * import the hook from there instead:
  *
  *   import { useMetaField } from '@block-accessibility-checks/editor';
- *
- * Otherwise, this shim handles standard WordPress meta binding so your plugin
- * continues to work when BAC is deactivated.
  *
  * @param {string} metaKey        - The meta key to manage
  * @param {string} [originalHelp] - Optional help text
  * @return {Object} Props for TextControl (value, onChange, help, className)
  */
-export function useMetaField( metaKey, originalHelp = '' ) {
-	const { value } = useSelect(
+export function useMetaField(metaKey, originalHelp = '') {
+	const { value, wrapperClassName } = useSelect(
 		select => {
-			const editor = select( 'core/editor' );
-			if ( ! editor ) {
-				return { value: '' };
+			const editor = select('core/editor');
+			const validation = select('core/validation');
+
+			const meta = editor ? editor.getEditedPostAttribute('meta') : null;
+			const currentValue = meta ? meta[metaKey] : '';
+
+			let className = '';
+			if (validation && typeof validation.getInvalidMeta === 'function') {
+				const invalidMeta = validation.getInvalidMeta() || [];
+				const thisField = invalidMeta.find(m => m.metaKey === metaKey);
+				if (thisField?.hasErrors) {
+					className = 'validation-api-meta-error';
+				} else if (thisField?.hasWarnings) {
+					className = 'validation-api-meta-warning';
+				}
 			}
 
-			const meta = editor.getEditedPostAttribute( 'meta' );
-			return {
-				value: meta ? meta[ metaKey ] : '',
-			};
+			return { value: currentValue, wrapperClassName: className };
 		},
-		[ metaKey ]
+		[metaKey]
 	);
 
-	const { editPost } = useDispatch( 'core/editor' );
+	const { editPost } = useDispatch('core/editor');
 
 	return {
 		value: value || '',
 		onChange: newValue => {
-			if ( editPost ) {
-				editPost( { meta: { [ metaKey ]: newValue } } );
+			if (editPost) {
+				editPost({ meta: { [metaKey]: newValue } });
 			}
 		},
 		help: originalHelp,
-		className: '',
+		className: wrapperClassName ? `validation-api-field ${wrapperClassName}` : '',
 	};
 }

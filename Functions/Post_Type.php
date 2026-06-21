@@ -4,10 +4,10 @@
  *
  * This class is responsible for enqueuing the plugin's assets.
  *
- * @package Ba11y_Checks_Example
+ * @package Validation_API_Example
  */
 
-namespace Ba11y_Checks_Example;
+namespace Validation_API_Example;
 
 if ( ! defined( 'ABSPATH' ) ) {
 	exit;
@@ -33,47 +33,42 @@ class Post_Type {
 		add_action( 'init', array( $this, 'register_band_post_type' ) );
 		add_action( 'init', array( $this, 'register_genre_taxonomy' ) );
 		add_action( 'init', array( $this, 'register_band_meta' ) );
-		add_action( 'rest_api_init', array( $this, 'register_band_meta' ) );
 	}
 
 	/**
-	 * Registers the custom post type for FAQs.
-	 *
-	 * This method defines and registers a custom post type specifically for
-	 * Frequently Asked Questions (FAQs). It sets up the necessary labels,
-	 * arguments, and configurations to integrate the post type into WordPress.
+	 * Registers the Band custom post type.
 	 *
 	 * @return void
 	 */
 	public function register_band_post_type() {
 		$labels = array(
-			'name'                  => 'Bands',
-			'singular_name'         => 'Band',
-			'menu_name'             => 'Bands',
-			'name_admin_bar'        => 'Bands',
-			'archives'              => 'Band Archives',
-			'attributes'            => 'Band Attributes',
-			'parent_item_colon'     => 'Parent File:',
-			'all_items'             => 'All Bands',
-			'add_new_item'          => 'Add New Band',
-			'add_new'               => 'Add New',
-			'new_item'              => 'New Band',
-			'edit_item'             => 'Edit Band',
-			'update_item'           => 'Update Band',
-			'view_item'             => 'View Band',
-			'view_items'            => 'View Bands',
-			'search_items'          => 'Search Bands',
-			'not_found'             => 'Not found',
-			'not_found_in_trash'    => 'Not found in Trash',
-			'featured_image'        => 'Featured Image',
-			'set_featured_image'    => 'Set featured image',
-			'remove_featured_image' => 'Remove featured image',
-			'use_featured_image'    => 'Use as featured image',
-			'insert_into_item'      => 'Insert into band',
-			'uploaded_to_this_item' => 'Uploaded to this band',
-			'items_list'            => 'Band list',
-			'items_list_navigation' => 'Band list navigation',
-			'filter_items_list'     => 'Filter Band list',
+			'name'                  => __( 'Bands', 'validation-api-example' ),
+			'singular_name'         => __( 'Band', 'validation-api-example' ),
+			'menu_name'             => __( 'Bands', 'validation-api-example' ),
+			'name_admin_bar'        => __( 'Bands', 'validation-api-example' ),
+			'archives'              => __( 'Band Archives', 'validation-api-example' ),
+			'attributes'            => __( 'Band Attributes', 'validation-api-example' ),
+			'parent_item_colon'     => __( 'Parent Band:', 'validation-api-example' ),
+			'all_items'             => __( 'All Bands', 'validation-api-example' ),
+			'add_new_item'          => __( 'Add New Band', 'validation-api-example' ),
+			'add_new'               => __( 'Add New', 'validation-api-example' ),
+			'new_item'              => __( 'New Band', 'validation-api-example' ),
+			'edit_item'             => __( 'Edit Band', 'validation-api-example' ),
+			'update_item'           => __( 'Update Band', 'validation-api-example' ),
+			'view_item'             => __( 'View Band', 'validation-api-example' ),
+			'view_items'            => __( 'View Bands', 'validation-api-example' ),
+			'search_items'          => __( 'Search Bands', 'validation-api-example' ),
+			'not_found'             => __( 'Not found', 'validation-api-example' ),
+			'not_found_in_trash'    => __( 'Not found in Trash', 'validation-api-example' ),
+			'featured_image'        => __( 'Featured Image', 'validation-api-example' ),
+			'set_featured_image'    => __( 'Set featured image', 'validation-api-example' ),
+			'remove_featured_image' => __( 'Remove featured image', 'validation-api-example' ),
+			'use_featured_image'    => __( 'Use as featured image', 'validation-api-example' ),
+			'insert_into_item'      => __( 'Insert into band', 'validation-api-example' ),
+			'uploaded_to_this_item' => __( 'Uploaded to this band', 'validation-api-example' ),
+			'items_list'            => __( 'Band list', 'validation-api-example' ),
+			'items_list_navigation' => __( 'Band list navigation', 'validation-api-example' ),
+			'filter_items_list'     => __( 'Filter Band list', 'validation-api-example' ),
 		);
 
 		$rewrite = array(
@@ -110,36 +105,32 @@ class Post_Type {
 	}
 
 	/**
-	 * Registers the custom taxonomy for the FAQ post type.
-	 *
-	 * This function is responsible for creating and registering a taxonomy
-	 * specifically for the FAQ custom post type. It defines the taxonomy's
-	 * labels, settings, and associations with the FAQ post type.
+	 * Registers the Genre taxonomy for the Band post type.
 	 *
 	 * @return void
 	 */
 	public function register_genre_taxonomy() {
 		$labels = array(
-			'name'                       => 'Genres',
-			'singular_name'              => 'Genre',
-			'menu_name'                  => 'Genres',
-			'all_items'                  => 'All Genres',
-			'parent_item'                => 'Parent Genre',
-			'parent_item_colon'          => 'Parent Genre:',
-			'new_item_name'              => 'New Genre Name',
-			'add_new_item'               => 'Add New Genre',
-			'edit_item'                  => 'Edit Genre',
-			'update_item'                => 'Update Genre',
-			'view_item'                  => 'View Genre',
-			'separate_items_with_commas' => 'Separate genres with commas',
-			'add_or_remove_items'        => 'Add or remove genres',
-			'choose_from_most_used'      => 'Choose from the most used',
-			'popular_items'              => 'Popular genres',
-			'search_items'               => 'Search Genres',
-			'not_found'                  => 'Not Found',
-			'no_terms'                   => 'No genres',
-			'items_list'                 => 'Genres list',
-			'items_list_navigation'      => 'Genres list navigation',
+			'name'                       => __( 'Genres', 'validation-api-example' ),
+			'singular_name'              => __( 'Genre', 'validation-api-example' ),
+			'menu_name'                  => __( 'Genres', 'validation-api-example' ),
+			'all_items'                  => __( 'All Genres', 'validation-api-example' ),
+			'parent_item'                => __( 'Parent Genre', 'validation-api-example' ),
+			'parent_item_colon'          => __( 'Parent Genre:', 'validation-api-example' ),
+			'new_item_name'              => __( 'New Genre Name', 'validation-api-example' ),
+			'add_new_item'               => __( 'Add New Genre', 'validation-api-example' ),
+			'edit_item'                  => __( 'Edit Genre', 'validation-api-example' ),
+			'update_item'                => __( 'Update Genre', 'validation-api-example' ),
+			'view_item'                  => __( 'View Genre', 'validation-api-example' ),
+			'separate_items_with_commas' => __( 'Separate genres with commas', 'validation-api-example' ),
+			'add_or_remove_items'        => __( 'Add or remove genres', 'validation-api-example' ),
+			'choose_from_most_used'      => __( 'Choose from the most used', 'validation-api-example' ),
+			'popular_items'              => __( 'Popular genres', 'validation-api-example' ),
+			'search_items'               => __( 'Search Genres', 'validation-api-example' ),
+			'not_found'                  => __( 'Not Found', 'validation-api-example' ),
+			'no_terms'                   => __( 'No genres', 'validation-api-example' ),
+			'items_list'                 => __( 'Genres list', 'validation-api-example' ),
+			'items_list_navigation'      => __( 'Genres list navigation', 'validation-api-example' ),
 		);
 
 		$rewrite = array(
@@ -165,13 +156,9 @@ class Post_Type {
 	/**
 	 * Registers meta fields for the band post type.
 	 *
-	 * This method is responsible for registering the meta fields for the band post type.
-	 * It registers the meta fields for the band post type and sets the necessary settings.
-	 *
 	 * @return void
 	 */
 	public function register_band_meta() {
-		// Check if Validator class is available.
 		$validator_class     = '\BlockAccessibility\Meta\Validator';
 		$validator_available = class_exists( $validator_class );
 
@@ -190,10 +177,10 @@ class Post_Type {
 						'band',
 						'band_origin',
 						array(
-							'namespace'    => 'ba11y-checks-example',
-							'error_msg'    => __( 'City of Origin is required.', 'ba11y-checks-example' ),
-							'warning_msg'  => __( 'City of Origin is recommended.', 'ba11y-checks-example' ),
-							'description'  => __( 'The city where the band originated', 'ba11y-checks-example' ),
+							'namespace'    => 'validation-api-example',
+							'error_msg'    => __( 'City of Origin is required.', 'validation-api-example' ),
+							'warning_msg'  => __( 'City of Origin is recommended.', 'validation-api-example' ),
+							'description'  => __( 'The city where the band originated', 'validation-api-example' ),
 							'level'        => 'error',
 							'configurable' => true,
 						)
@@ -216,10 +203,10 @@ class Post_Type {
 						'band',
 						'band_record_label',
 						array(
-							'namespace'    => 'ba11y-checks-example',
-							'error_msg'    => __( 'Record Label is required.', 'ba11y-checks-example' ),
-							'warning_msg'  => __( 'Record Label is recommended.', 'ba11y-checks-example' ),
-							'description'  => __( 'The record label of the band', 'ba11y-checks-example' ),
+							'namespace'    => 'validation-api-example',
+							'error_msg'    => __( 'Record Label is required.', 'validation-api-example' ),
+							'warning_msg'  => __( 'Record Label is recommended.', 'validation-api-example' ),
+							'description'  => __( 'The record label of the band', 'validation-api-example' ),
 							'level'        => 'error',
 							'configurable' => true,
 						)
@@ -242,10 +229,10 @@ class Post_Type {
 						'band',
 						'band_first_album',
 						array(
-							'namespace'    => 'ba11y-checks-example',
-							'error_msg'    => __( 'First Album is required.', 'ba11y-checks-example' ),
-							'warning_msg'  => __( 'First Album is recommended.', 'ba11y-checks-example' ),
-							'description'  => __( 'The first album of the band', 'ba11y-checks-example' ),
+							'namespace'    => 'validation-api-example',
+							'error_msg'    => __( 'First Album is required.', 'validation-api-example' ),
+							'warning_msg'  => __( 'First Album is recommended.', 'validation-api-example' ),
+							'description'  => __( 'The first album of the band', 'validation-api-example' ),
 							'level'        => 'error',
 							'configurable' => true,
 						)

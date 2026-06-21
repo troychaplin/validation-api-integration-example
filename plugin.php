@@ -8,9 +8,9 @@
  * Author:            Troy Chaplin
  * License:           GPL-2.0-or-later
  * License URI:       https://www.gnu.org/licenses/gpl-2.0.html
- * Text Domain:       ba11y-checks-example
+ * Text Domain:       validation-api-example
  *
- * @package Ba11y_Checks_Example
+ * @package Validation_API_Example
  */
 
 if ( ! defined( 'ABSPATH' ) ) {
@@ -21,20 +21,21 @@ if ( ! defined( 'ABSPATH' ) ) {
 if ( file_exists( plugin_dir_path( __FILE__ ) . 'vendor/autoload.php' ) ) {
 	require_once plugin_dir_path( __FILE__ ) . 'vendor/autoload.php';
 } else {
-	wp_trigger_error( 'BA11Y Multi-Block Example Plugin: Composer autoload file not found. Please run `composer install`.', E_USER_ERROR );
+	wp_trigger_error( 'Validation_API_Example', 'Composer autoload file not found. Please run `composer install`.', E_USER_ERROR );
 	return;
 }
 
 // Instantiate the classes.
-$ba11y_checks_example_classes = array(
-	\Ba11y_Checks_Example\Plugin_Paths::class,
-	\Ba11y_Checks_Example\Register_Blocks::class,
-	\Ba11y_Checks_Example\Enqueues::class,
-	\Ba11y_Checks_Example\Post_Type::class,
-	\Ba11y_Checks_Example\Check_Album_Cards::class,
-	\Ba11y_Checks_Example\Check_Content_Editor::class,
+$validation_api_example_classes = array(
+	\Validation_API_Example\Plugin_Paths::class,
+	\Validation_API_Example\Register_Blocks::class,
+	\Validation_API_Example\Enqueues::class,
+	\Validation_API_Example\Post_Type::class,
+	\Validation_API_Example\Check_Album_Cards::class,
+	\Validation_API_Example\Check_Content_Editor::class,
+	\Validation_API_Example\Check_Band_Meta::class,
 );
 
-foreach ( $ba11y_checks_example_classes as $ba11y_checks_example_class ) {
-	new $ba11y_checks_example_class();
+foreach ( $validation_api_example_classes as $validation_api_example_class ) {
+	new $validation_api_example_class();
 }
