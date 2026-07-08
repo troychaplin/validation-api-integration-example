@@ -1,6 +1,6 @@
 {
 	"name": "validation-api-example",
-	"version": "1.4.21",
+	"version": "1.5.0",
 	"description": "An example integration plugin demonstrating validation checks with the Validation API",
 	"author": "Troy Chaplin",
 	"license": "GPL-2.0-or-later",
