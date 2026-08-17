@@ -31,6 +31,7 @@ $validation_api_example_classes = array(
 	\Validation_API_Example\Register_Blocks::class,
 	\Validation_API_Example\Enqueues::class,
 	\Validation_API_Example\Post_Type::class,
+	\Validation_API_Example\Register_Namespace::class,
 	\Validation_API_Example\Check_Album_Cards::class,
 	\Validation_API_Example\Check_Content_Editor::class,
 	\Validation_API_Example\Check_Band_Meta::class,
