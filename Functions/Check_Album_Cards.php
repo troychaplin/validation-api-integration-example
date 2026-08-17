@@ -43,6 +43,7 @@ class Check_Album_Cards {
 			array(
 				'namespace'   => 'validation-api-example',
 				'name'        => 'check_album_heading_text',
+				'title'       => __( 'Album card heading text', 'validation-api-example' ),
 				'level'       => 'error',
 				'error_msg'   => __( 'A title is required for each album card.', 'validation-api-example' ),
 				'warning_msg' => __( 'Consider adding an album title for better accessibility.', 'validation-api-example' ),
@@ -55,6 +56,7 @@ class Check_Album_Cards {
 			array(
 				'namespace'   => 'validation-api-example',
 				'name'        => 'check_album_release_date',
+				'title'       => __( 'Album card release date', 'validation-api-example' ),
 				'level'       => 'warning',
 				'error_msg'   => __( 'A release date is required for each album card.', 'validation-api-example' ),
 				'warning_msg' => __( 'Consider adding an album release date for better user experience.', 'validation-api-example' ),
@@ -67,6 +69,7 @@ class Check_Album_Cards {
 			array(
 				'namespace'   => 'validation-api-example',
 				'name'        => 'check_album_source_link',
+				'title'       => __( 'Album card source link', 'validation-api-example' ),
 				'level'       => 'error',
 				'error_msg'   => __( 'A link is required for each album card.', 'validation-api-example' ),
 				'warning_msg' => __( 'Consider adding a link for better credibility.', 'validation-api-example' ),
@@ -79,6 +82,7 @@ class Check_Album_Cards {
 			array(
 				'namespace'   => 'validation-api-example',
 				'name'        => 'check_album_innerblock_count',
+				'title'       => __( 'Album card inner block count', 'validation-api-example' ),
 				'level'       => 'error',
 				'error_msg'   => __( 'One paragraph is required for each album card to a maximum of two paragraphs. One button group is allowed per album card.', 'validation-api-example' ),
 				'warning_msg' => __( 'Consider adding a paragraph for better user experience. One button group is allowed per album card.', 'validation-api-example' ),

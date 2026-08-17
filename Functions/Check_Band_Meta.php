@@ -40,6 +40,7 @@ class Check_Band_Meta {
 			array(
 				'namespace'   => 'validation-api-example',
 				'name'        => 'required',
+				'title'       => __( 'Band origin', 'validation-api-example' ),
 				'meta_key'    => 'band_origin',
 				'level'       => 'error',
 				'description' => __( 'The city where the band originated', 'validation-api-example' ),
@@ -53,6 +54,7 @@ class Check_Band_Meta {
 			array(
 				'namespace'   => 'validation-api-example',
 				'name'        => 'required',
+				'title'       => __( 'Band record label', 'validation-api-example' ),
 				'meta_key'    => 'band_record_label',
 				'level'       => 'warning',
 				'description' => __( 'The record label of the band', 'validation-api-example' ),
@@ -66,6 +68,7 @@ class Check_Band_Meta {
 			array(
 				'namespace'   => 'validation-api-example',
 				'name'        => 'required',
+				'title'       => __( 'Band first album', 'validation-api-example' ),
 				'meta_key'    => 'band_first_album',
 				'level'       => 'error',
 				'description' => __( 'The first album of the band', 'validation-api-example' ),
